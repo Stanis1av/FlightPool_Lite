@@ -1,0 +1,12 @@
+/*datalist {
+    display: contents;
+}*/
+
+input,
+label {
+    display: block;
+}
+
+.container-main {
+    margin: 20px;
+}
