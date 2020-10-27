@@ -1,5 +1,17 @@
 <?php
 
+$from_where = $_POST['from_where'];
+$to_where = $_POST['to_where'];
+$departing = $_POST['departing'];
+$returning = $_POST['returning'];
+$passengers = $_POST['passengers'];
+
+$id_f = $id;
+$plane = $pl;
+$arrival = $arrival;
+$price = $price;
+$flight_time = $x;
+
 $db_host = "localhost";
 $db_user = "root";
 $db_pass = "";
@@ -12,7 +24,40 @@ if ($db->connect_error) {
 	exit;
 }
 
-$my_data = $db->query("SELECT * FROM flights");
+function clean($value = "") {
+    $value = trim($value);
+    $value = stripslashes($value);
+    $value = strip_tags($value);
+    $value = htmlspecialchars($value);
+    
+    return $value;
+}
+
+function check_length($value = "", $min, $max) {
+    $result = (mb_strlen($value) < $min || mb_strlen($value) > $max);
+    return !$result;
+}
+
+$from_where = clean($from_where);
+$to_where = clean($to_where);
+$departing = clean($departing);
+$returning = clean($returning);
+$passengers = clean($passengers);
+
+if(!empty($from_where) && !empty($to_where) && !empty($departing) && !empty($returning) && !empty($passengers)) {
+
+    // $email_validate = filter_var($departing, FILTER_VALIDATE_EMAIL); 
+
+    // if(check_length($from_where, 2, 25) && check_length($to_where, 2, 50) && check_length($departing, 2, 1000) && check_length($returning, 2, 1000) && check_length($returning, 2, 1000)) {
+    //     echo "Спасибо за сообщение";
+    // } else { // добавили сообщение
+    //     echo "Введенные данные некорректны";
+    // }
+} else { // добавили сообщение
+    echo "Заполните пустые поля";
+}
+
+$my_data = $db->query("SELECT * FROM flights WHERE ");
 
 $db->close();
 ?>
@@ -45,7 +90,7 @@ $db->close();
     <form action="flights.php" method="POST">
         <div class="container">
         	<label class="ff-label">Откуда (From where) – город или аэропорт вылета</label>
-        	<select class="select-prim" name="">
+        	<select class="select-prim" name="from_where">
         		<option value="Самара">Самара</option>
         		<option value="Ростов">Ростов</option>
         		<option value="Саратов">Саратов</option>
@@ -54,7 +99,7 @@ $db->close();
         </div>
         <div class="container">
         	<label class="ff-label">Куда (To  where) – город или аэропорт прилета</label>
-        	<select class="select-prim" name="">
+        	<select class="select-prim" name="to_where">
         		<option value="Самара">Самара</option>
         		<option value="Ростов">Ростов</option>
         		<option value="Саратов">Саратов</option>
@@ -63,16 +108,16 @@ $db->close();
         </div>
         <div class="container">
         	<label class="ff-label">Туда (Departing) – дата вылета</label>
-        	<input class="input-prim" type="datetime-local" name="">
+        	<input class="input-prim" type="datetime-local" name="departing">
         </div>
         <div class="container">
         	<label class="ff-label">Обратно (Returning) – дата возвращения обратно</label>
-        	<input class="input-prim" type="datetime-local" name="">
+        	<input class="input-prim" type="datetime-local" name="returning">
         </div>
         <br/>
         <div class="container">
         	<label class="ff-label">Количество пассажиров (Passengers) – от 1 до 8</label>
-        	<input type="range" min="1" max="8" list="tickmarks">
+        	<input name="passengers" type="range" min="1" max="8" list="tickmarks">
 
 			<datalist id="tickmarks">
 			  <option value="1">
