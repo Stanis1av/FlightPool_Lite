@@ -28,7 +28,7 @@ session_start();
 
 <hr/>
     <div class="container-big">
-    	<form action="vendor/registration.php" method="POST">
+    	<form action="/regist.php" method="POST">
     	<h1>Зарегистрироваться</h1>
        
     		<div class="container">
@@ -45,6 +45,8 @@ session_start();
         	</div>
     		<br/>
         	<button class="btn-reg" type="submit">Зарегистрироваться</button>
+            <br/>
+            <p><?= $SESSION['message'] ?></p>
     	</form>
     </div>
     <hr/>
@@ -54,21 +56,6 @@ session_start();
 </html>  
 <?php
 
-// $username = $_POST['username'];
-// $pass = $_POST['pass'];
-// $pass2 = $_POST['pass2'];
-
-// $username = clean($username);
-// $pass = clean($pass);
-// $pass2 = clean($pass2);
-
-// if(!empty($username) && !empty($pass) && !empty($pass1)) {
-
-// } else { // добавили сообщение
-//     echo "Заполните пустые поля";
-// }
-
-// $reg = "INSERT INTO `users`(`id`, `username`, `password`) VALUES ('".$username."','".$password."')";
 
 
 
