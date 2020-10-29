@@ -20,7 +20,7 @@ session_start();
                     <a class="nav-link" href="/">Главная</a>
                 </li>
 				<li class="nav-item">
-					<a class="nav-link" href="/regist">Регистрация</a>
+					<a class="nav-link" href="/registration.php">Регистрация</a>
                 </li>
 			</ul>
 		</nav>

@@ -1,6 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Airport</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<body>
 <?php
-
-session_start();
 
 require_once 'index.php';
 
@@ -12,7 +19,7 @@ $passengers = $_POST['passengers'];
 
 $db_host = "localhost";
 $db_user = "root";
-$db_pass = "";
+$db_pass = "root";
 $db_name = "import";
 
 $db = new mysqli($db_host, $db_user, $db_pass, $db_name);
@@ -60,7 +67,7 @@ if ($result = mysqli_query($db, $sql)) {
 
 
 <hr/>
-    	<div>
+    	<div class="container-big">
     	<h1>Экран с найденными рейсами</h1>
   		<br/>
 
@@ -82,3 +89,6 @@ if ($result = mysqli_query($db, $sql)) {
 } else {
 	echo "<h2>Ничегоне найдено</h2>";
 }
+?>
+</body>
+</html>
