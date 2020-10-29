@@ -58,6 +58,8 @@ if(!empty($from_where) && !empty($to_where) && !empty($departing)) {
 
 $sql = "SELECT * FROM flights WHERE departure='".$departing."' && from_where='".$from_where."' && to_where='".$to_where."'";
 
+
+
 if ($result = mysqli_query($db, $sql)) {
 
     /* выборка данных и помещение их в массив */
@@ -89,6 +91,41 @@ if ($result = mysqli_query($db, $sql)) {
 } else {
 	echo "<h2>Ничегоне найдено</h2>";
 }
+
+$sql_return = "SELECT * FROM flights WHERE departure='".$returning."' && from_where='".$to_where."' && to_where='".$from_where."'";
+if ($result1 = mysqli_query($db, $sql_return)) {
+
+    /* выборка данных и помещение их в массив */
+    while ($row1 = mysqli_fetch_row($result1)) {
+    $summ = $row1[8] * $passengers;
 ?>
+
+
+<hr/>
+        <div class="container-big">
+        <h2>Найденные рейсы для возвращения</h2>
+        <br/>
+
+        <div class="."find_cont".">
+            <label>Номер рейса: <b><?php echo $row1[0]; ?></b></label><br/>
+            <label>Самолет: <b><?php echo $row1[1]; ?></b></label><br/>
+            <label>Дата и время отправления: <b><?php echo $row1[5]; ?></b></label><br/>
+            <label>Время прибытия: <b><?php echo $row1[6]; ?></b></label><br/>
+            <label>Время в полёте: <b><?php echo $row1[7]; ?></b></label><br/>
+            <label>Общую цену, учитывая количество пассажиров: <b><?php echo $summ; ?></b></label><br/>
+        </div>
+        </div>
+
+    <?php
+    }
+
+    /* очищаем результирующий набор */
+    mysqli_free_result($result1);
+} else {
+    echo "<h2>Ничегоне найдено</h2>";
+}
+?>
+
+
 </body>
 </html>
