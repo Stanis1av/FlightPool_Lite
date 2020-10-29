@@ -1,12 +1,104 @@
 /*datalist {
     display: contents;
 }*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+
+/* Show it is fixed to the top */
+body  {
+    font-family: Montserrat, sans-serif;
+}
+
+.navbar {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  overflow: hidden;
+}
+.navbar li {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: -5px;
+  float: left;
+}
+.navbar a {
+  display: block;
+  border-bottom: none;
+  padding: 10px;
+  margin-right: 0px;
+  background-color: #EAEAEA;
+  text-decoration: none;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+a:hover {
+  color: black;
+}
+ul.navbar {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+  background-color: #EAEAEA;
+}
+
+.name-page {
+
+  width: 50%;
+}
+
+.w-25 {
+  width: 50%;
+}
+
+
+div.container-big {
+    padding: 10px;
+    margin: 20px;
+}
+
+div.container {
+    margin: 5px 0px;
+}
+
+button {
+    border: none;
+    background-color: #3f96fd;
+    border-radius: 5px;
+    width: 75px;
+    height: 35px;
+    font-size: 15px;
+    font-weight: bold;
+}
+button:hover {
+    width: 80px;
+    height: 40px;
+}
+
+button.btn-reg {
+    border: none;
+    background-color: #3f96fd;
+    border-radius: 5px;
+    width: 180px;
+    height: 35px;
+    font-size: 15px;
+    font-weight: bold;
+}
+button.btn-reg:hover {
+    width: 185px;
+    height: 40px;
+}
 input,
 label {
     display: block;
-}
-
-.container-main {
-    margin: 20px;
 }
